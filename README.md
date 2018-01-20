@@ -12,14 +12,14 @@ Deploying the application, you can take two different approaches:
 
 You can find the documentation for both options in each module.
 
-## Modules§
+## Modules
 
 The workshop is broken up into different modules, one for each part of the result application. The idea is to do it in the order below:
 
 1. [Web Hosting](1-web-hosting)
 2. Email configuration
 3. User Management
-4. Serverless Backend
+4. [Serverless Backend](2-serverless-backend)
 5. API
 
 Once you have finished, you should delete the created resources to avoid billing charges.
