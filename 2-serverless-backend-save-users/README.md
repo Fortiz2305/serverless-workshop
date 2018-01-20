@@ -10,10 +10,10 @@ The function will be invoked using AWS API Gateway. We will connect our service 
 
 * Using Serverless framework: Go to [Using Serverless Framework](#using-serverless-framework) section.
 
-* Using the AWS Console: Go to [Not using Serverless Framework](#not-using-serverless-framework) section.
+* Using the AWS Console: Go to [Using the AWS console](#using-the-aws-console) section.
 
 ## Using Serverless Framework
 
-## Not Using Serverless Framework
+## Using the AWS console
 
 ## Validation

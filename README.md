@@ -1,14 +1,20 @@
 # Serverless Web Application Workshop
 
-In this workshop you can deploy a simple Demo Landing webpage for your favourite product. The application will show the features of your product, a sample video of those features and a email form contact for people who want to know more about the product. In the email form, it will call to a backend service in order to send an email with the user information.
+In this workshop you will deploy a simple Demo Landing webpage for your favourite product. The application will show the features of your product, a sample video of those features and a email form contact for people who want to know more about the product. When users fill the email form, it will call to a backend service in order to save the user information. Then, it will send an email to the user with more product details.
+
+The idea behind the workshop is to show how simple is to get a solution like this one to validate an idea. Apart from this simplicity, the use of Serverless in the AWS environment will automatically provide us things like:
+
+* **Metrics**: it is very important to recollect information about the usage of our platform as soon as possible. Using AWS Lambda, we will have the usage control of our functions since the first moment.
+
+* **Cost**: we are not going to spend money if nobody uses the platform.
 
 The application architecture uses [AWS Lambda](https://aws.amazon.com/es/lambda/), [Amazon API Gateway](https://aws.amazon.com/es/api-gateway/), [Amazon S3](https://aws.amazon.com/es/s3/), [Amazon DynamoDB](https://aws.amazon.com/es/dynamodb/) and [Amazon Simple Email Service](https://aws.amazon.com/es/ses/).
 
-Deploying the application, you can take two different approaches:
+To deploy the application, you can take two different approaches:
 
-* Using the [Serverless](https://serverless.com/) framework
+* Use the [Serverless](https://serverless.com/) framework
 
-* Using the [AWS console](https://console.aws.amazon.com).
+* Use the [AWS console](https://console.aws.amazon.com): if you are already comfortable working with the AWS console and you don't want to use the Serverless framework "magic", this is your approach :)
 
 You can find the documentation for both options in each module.
 

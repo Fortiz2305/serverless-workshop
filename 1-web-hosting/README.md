@@ -5,7 +5,7 @@ The architecture is pretty simple: all your static web files (HTML, CSS, Javascr
 
 ![Website architecture](./images/architecture.png)
 
-Firstly, we are going to solve the problem using the [Serverless](https://serverless.com/) framework. If you are already comfortable working with the AWS console and you don't want to use the framework "magic", you can go to the [Not using Serverless Framework](#not-using-serverless-framework) section.
+Firstly, we are going to solve the problem using the [Serverless](https://serverless.com/) framework. If you are already comfortable working with the AWS console and you don't want to use the framework "magic", you can go to the [Using the AWS console](#using-the-aws-console) section.
 
 ## Using Serverless Framework
 
@@ -46,7 +46,7 @@ serverless client deploy
 
 You will find the URL of your newly deployed website in the command output. It will look like `http://<YOUR_BUCKET_NAME>.s3-website-<YOUR_REGION>.amazonaws.com/` and you should see the page shown in the [Validation](#validation) section.
 
-## Not using Serverless Framework
+## Using the AWS console
 
 If you don't want to use the Serverless plugin, you can get the same result using the AWS console. In order to do it, it is necessary to follow the steps below:
 
@@ -130,4 +130,4 @@ You should see a page like the picture below in your website's base URL.
 
 ![S3 Bucket Hosting: Validation](./images/s3_host_validation.png)
 
-If you have completed this module you can move to the next one: [Serverless Backend](../2-serverless-backend).
+If you have completed this module you can move to the next one: [Serverless Backend: Save Users Info](../2-serverless-backend-save-users).
