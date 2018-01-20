@@ -16,7 +16,7 @@ You can find the documentation for both options in each module.
 
 The workshop is broken up into different modules, one for each part of the result application. The idea is to do it in the order below:
 
-1. [Web Hosting](web-hosting)
+1. [Web Hosting](1-web-hosting)
 2. Email configuration
 3. User Management
 4. Serverless Backend
@@ -28,5 +28,14 @@ Once you have finished, you should delete the created resources to avoid billing
 
 ### AWS Account
 
-It is necessary to have an AWS Account with access to the services above. All the resources you will launch in this workshop are available in the [AWS Free Tier](https://aws.amazon.com/es/free/).
+It is necessary to have an AWS Account with access to the services above. All the resources you will launch in this workshop are available in the [AWS Free Tier](https://aws.amazon.com/es/free/). Once you have the account, it is necessary to setup an account so that the Serverless framework can interact with AWS. You can do it following [this documentation](https://serverless.com/framework/docs/providers/aws/guide/credentials/) and there is also a [video](https://www.youtube.com/watch?v=HSd9uYj2LJA) which explains the process.
 
+### Serverless Framework
+
+If you want to do the workshop using the Serverless framework approach, you need to have the Serverless framework installed on your machine. To install it, you need `npm` and execute:
+
+```
+npm install -g serverless
+```
+
+More information in the [Serverless documentation](https://serverless.com/framework/docs/getting-started/).
