@@ -13,4 +13,3 @@ plugins:
 custom:
   client:
     bucketName: serverless-static-website
-

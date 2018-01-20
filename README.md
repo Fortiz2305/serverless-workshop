@@ -12,7 +12,7 @@ Deploying the application, you can take two different approaches:
 
 You can find the documentation for both options in each module.
 
-## Modules
+## Modules§
 
 The workshop is broken up into different modules, one for each part of the result application. The idea is to do it in the order below:
 
