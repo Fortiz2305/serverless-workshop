@@ -1,0 +1,10 @@
+{
+  "name": "2-serverless-backend",
+  "version": "0.0.1",
+  "description": "Serverless Users API",
+  "author": "Francisco Ortiz",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^3.2.1"
+  }
+}

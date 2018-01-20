@@ -2,3 +2,6 @@
 
 # Node modules
 */node_modules
+
+# Serverless directories
+*/.serverless
