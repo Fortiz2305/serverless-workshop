@@ -1,5 +1,7 @@
 # Serverless Web Application Workshop
 
+## NOTE: This is a WIP repo. Some modules are not completed yet.
+
 In this workshop you will deploy a simple Demo Landing webpage for your favourite product. The application will show the features of your product, a sample video of those features and a email form contact for people who want to know more about the product. When users fill the email form, it will call to a backend service in order to save the user information. Then, it will send an email to the user with more product details.
 
 The idea behind the workshop is to show how simple is to get a solution like this one to validate an idea. Apart from this simplicity, the use of Serverless in the AWS environment will automatically provide us things like:
