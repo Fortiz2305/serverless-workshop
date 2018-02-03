@@ -11,17 +11,29 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
-        - dynamodb:PutItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+        - dynamodb:GetRecords
+        - dynamodb:GetShardIterator
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+      Resource:
+        Fn::GetAtt:
+          - UsersTable
+          - StreamArn
+    - Effect: Allow
+      Action:
+        - "ses:*"
+      Resource: "*"
 
 functions:
-  create:
-    handler: users/create.create
+  sendEmail:
+    handler: emails/send.send
     events:
-      - http:
-          path: users
-          method: post
-          cors: true
+      - stream:
+          type: dynamodb
+          arn:
+            Fn::GetAtt:
+              - UsersTable
+              - StreamArn
 
 resources:
   Resources:
