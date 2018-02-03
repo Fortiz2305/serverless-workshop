@@ -100,7 +100,11 @@ As we did in the first module, if you don't want to use the Serverless plugin, y
 
 ![DynamoDB Create Table](./images/dynamo_table_name.png)
 
-4. Click on `Create`. When the table is created, select the `Overview` section. Here, in the `Table details` part, save the `Amazon Resource Name (ARN)` value. We will use it later.
+4. Unselect the `Use default settings` option, and the **Auto Scaling** features. After that, you will be able to place the unit/write capacities that you want. In our case, we are going to select 1.
+
+![DynamoDB Read/Write capacity](./images/dynamo_read_write_capacity.png)
+
+5. Click on `Create`. When the table is created, select the `Overview` section. Here, in the `Table details` part, save the `Amazon Resource Name (ARN)` value. We will use it later.
 
 ### Create an IAM Role for the Lambda function
 

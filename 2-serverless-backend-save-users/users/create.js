@@ -30,12 +30,12 @@ module.exports.create = (event, context, callback) => {
     if (error) {
       console.error(error)
       callback(new Error('Couldn\'t create the user'))
-      return
+    } else {
+      const response = {
+        statusCode: 200,
+        body: JSON.stringify(params.Item)
+      }
+      callback(null, response)
     }
-    const response = {
-      statusCode: 200,
-      body: JSON.stringify(params.Item)
-    }
-    callback(null, response)
   })
 }
