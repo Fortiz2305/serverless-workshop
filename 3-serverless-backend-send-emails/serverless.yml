@@ -1,4 +1,4 @@
-service: serverless-create-users-api
+service: serverless-send-emails-api
 
 provider:
   name: aws
@@ -15,10 +15,7 @@ provider:
         - dynamodb:GetShardIterator
         - dynamodb:DescribeStream
         - dynamodb:ListStreams
-      Resource:
-        Fn::GetAtt:
-          - UsersTable
-          - StreamArn
+      Resource: <YOUR_STREAM_ARN>
     - Effect: Allow
       Action:
         - "ses:*"
@@ -28,30 +25,4 @@ functions:
   sendEmail:
     handler: emails/send.send
     events:
-      - stream:
-          type: dynamodb
-          arn:
-            Fn::GetAtt:
-              - UsersTable
-              - StreamArn
-
-resources:
-  Resources:
-    UsersTable:
-      Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
-      Properties:
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
-        AttributeDefinitions:
-          -
-            AttributeName: id
-            AttributeType: S
-        KeySchema:
-          -
-            AttributeName: id
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-        StreamSpecification:
-          StreamViewType: NEW_IMAGE
+      - stream: <YOUR_STREAM_ARN>

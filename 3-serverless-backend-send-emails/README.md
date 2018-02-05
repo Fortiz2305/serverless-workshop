@@ -14,6 +14,57 @@ So we have a new trigger for the Lambda function in this module. In the module 2
 
 ## Using Serverless Framework
 
+First thing we need to do is to create a `serverless.yml` file (as we did in the last modules). In this file, we will place all the configuration that Serverless needs to deploy our application.
+
+We are going to create a function triggered via DynamoDB which will send emails to the proper user. Every time we add a new item to the DynamoDB table, the function will be executed.
+
+So, in the serverless file we are going to say AWS to create an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in order to be able to get item information from the database. We are going to use the same database that we created in the step 2, so we need to get the stream ARN from it. In order to do it, go to [#PUT A SECTION HERE](). As we said in the Module 2, you can get more info about DynamoDB streams [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html). We also need to send emails, so we need to add the proper permissions.
+
+```yaml
+service: serverless-create-users-api
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: eu-west-1
+  profile: default
+  stage: dev
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetRecords
+        - dynamodb:GetShardIterator
+        - dynamodb:DescribeStream
+        - dynamodb:ListStreams
+      Resource: <YOUR_STREAM_ARN>
+    - Effect: Allow
+      Action:
+        - "ses:*"
+      Resource: "*"
+```
+
+Next step we are going to do is to define the function which will send the emails. As we already said, this function will be triggered each time a new item is added in the DynamoDB table and we measure the table activity with the DynamoDB stream. You can find the function in the `emails` folder and the function name is `send`. Please, remember to change the `<YOUR_STREAM_ARN>` part with your specific one.
+
+```yaml
+functions:
+  sendEmail:
+    handler: emails/send.send
+    events:
+      - stream: <YOUR_STREAM_ARN>
+```
+
+You can find the whole `serverless.yml` file in this folder.
+
+Once you have the complete file, we are going to deploy. Execute:
+
+```
+serverless deploy
+```
+
+To check that the function works properly, go to [Validation](#validation):
+
 ## Using the AWS Console
 
 ## Validation

@@ -27,7 +27,6 @@ resources:
   Resources:
     UsersTable:
       Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
       Properties:
         TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:

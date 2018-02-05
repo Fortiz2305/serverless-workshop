@@ -16,7 +16,7 @@ The function will be invoked using AWS API Gateway. We will connect our service 
 
 As we did in the first section, we need to create a `serverless.yml` file. In this file, we will place all the configuration that Serverless needs to deploy our application.
 
-We are going to create a function triggered via an API which will save users in a database in this section, and we are going to use DynamoDB as database. So, in the serverless file we are going to say AWS to create an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in order to put items in the database. We will also add the `DYNAMODB_TABLE` variable to the environment. See the `provider` part of the file below:
+We are going to create a function triggered via an API which will save users in a database in this section, and we are going to use DynamoDB as database. So, in the serverless file we are going to say AWS to create an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) in order to put items in the database. We will also add the `DYNAMODB_TABLE` variable to the environment. See the `provider` part of the yml below (this is a part of the `serverless.yml` file):
 
 ```yaml
 service: serverless-create-users-api
@@ -49,15 +49,15 @@ functions:
           cors: true
 ```
 
-Finally, we are going to create the DynamoDB table where the users will be saved. To do this, we define the DynamoDB Table type in the `resources` section of the `serverless.yml` file. As you can see, we are taking the name of the table from the environment (as we defined in the `provider` section) and we are also defining some parameters like the primary key of the table and the DynamoDB read/write capacity. More information about this [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html).
+Finally, we are going to create the DynamoDB table where the users will be saved. To do this, we define the DynamoDB Table type in the `resources` section of the `serverless.yml` file. As you can see, we are taking the name of the table from the environment (as we defined in the `provider` section) and we are also defining some parameters like the primary key of the table and the DynamoDB read/write capacity. More information about this [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ProvisionedThroughput.html). Apart from these parameters, you can see that we are also enabling a Stream (see the `StreamSpecification` part in the yml file). Using this, we can get the table activity. When a new item is added, we can take the new item information from the stream. We will use this feature in the next module, but you can get more info about DynamoDB Streams in this [link](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html).
 
 ```yaml
 resources:
   Resources:
     UsersTable:
       Type: AWS::DynamoDB::Table
-      DeletionPolicy: Retain # Keeps around the DynamoDB resource when we redeploy/destroy
       Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
         AttributeDefinitions:
           -
             AttributeName: id
@@ -69,7 +69,8 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
 
 ```
 
