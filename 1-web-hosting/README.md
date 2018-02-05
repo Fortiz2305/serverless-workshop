@@ -48,7 +48,7 @@ You will find the URL of your newly deployed website in the command output. It w
 
 ## Using the AWS console
 
-If you don't want to use the Serverless plugin, you can get the same result using the AWS console. In order to do it, it is necessary to follow the steps below:
+If you don't want to use the Serverless framework, you can get the same result using the AWS console. In order to do it, it is necessary to follow the steps below:
 
 ### Create a S3 bucket
 

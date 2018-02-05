@@ -89,7 +89,7 @@ To check that the function works properly, go to [Validation](#validation):
 
 ## Using the AWS console
 
-As we did in the first module, if you don't want to use the Serverless plugin, you can get the same result using the AWS console. In order to do it, it is necessary to follow the steps below:
+As we did in the first module, if you don't want to use the Serverless framework, you can get the same result using the AWS console. In order to do it, it is necessary to follow the steps below:
 
 ### Create a DynamoDB Table
 
@@ -126,8 +126,6 @@ In order to your Lambda function interact with other services, it is necessary t
 We said that we need permissions to write `CloudWatch` logs and to write on a `DynamoDB` table. Until now, we have only achieved the first part. Let's get the second one.
 
 6. In the Roles page, select the role you just created (`CreateUsersLambda`). Then, on the `Permissions` part, select `Add inline policy`.
-
-![Role Add Inline Policy](./images/inline_policy.png)
 
 7. In the Service part, click on `Choose a service` and search for `DynamoDB`
 
