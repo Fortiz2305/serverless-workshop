@@ -79,4 +79,6 @@ NOTE: In order to validate this module, we also need the module 2 already runnin
 curl -X POST 'https://0i5b3kodzl.execute-api.eu-west-1.amazonaws.com/dev/users' --data '{"name": "User Name", "email": "user@mail.com"}'
 ```
 
-Using this API, it should create an user in the DynamoDB table. As soon as the table gets a new item, the activity will be notified in the stream, where our function in the module 3 is listening. So, once we call to the API in the module 2, we should receive an email in our email address.
+Using this API, it should create an user in the DynamoDB table. As soon as the table gets a new item, the activity will be notified in the stream, where our function in the module 3 is listening. So, once we call to the API in the module 2, we should receive an email like the one below in our email address.
+
+![Email Validation](./images/email_validation.png)
