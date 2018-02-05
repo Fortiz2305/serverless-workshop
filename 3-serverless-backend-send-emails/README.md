@@ -12,6 +12,8 @@ So we have a new trigger for the Lambda function in this module. In the module 2
 
 * Using the AWS Console: Go to [Using the AWS console](#using-the-aws-console) section.
 
+Before going to our favourite approach, we need to make a common step. We are going to use [AWS Simple Email Service](https://aws.amazon.com/es/ses/) to send emails, so we need to validate our email in order to be able to send them. You can do it following the steps described in this [link](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses-procedure.html) from the AWS documentation.
+
 ## Using Serverless Framework
 
 First thing we need to do is to create a `serverless.yml` file (as we did in the last modules). In this file, we will place all the configuration that Serverless needs to deploy our application.
