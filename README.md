@@ -27,6 +27,7 @@ The workshop is broken up into different modules, one for each part of the resul
 1. [Web Hosting](1-web-hosting)
 2. [Serverless Backend. Save Users Info](2-serverless-backend-save-users)
 3. [Serverless Backend. Send Emails](3-serverless-backend-send-emails)
+4. [Call Backend From Website](4-call-backend-from-website)
 
 Once you have finished, you should delete the created resources to avoid billing charges.
 
