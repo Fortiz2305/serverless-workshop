@@ -26,21 +26,15 @@ We don't need to create another `serverless.yml` file in this section. The only 
 
 ```js
 $.ajax({
-    type: "POST",
-    url: "https://x7emf5bl5c.execute-api.eu-west-1.amazonaws.com/dev/users",
-    data: {
-        "name": name,
-        "email": email
-    },
-    dataType: "json",
-    beforeSend: function(x) {
-        if (x && x.overrideMimeType) {
-          x.overrideMimeType("application/j-son;charset=UTF-8");
-        }
-    },
+    method: "POST",
+    url: "<YOUR_API_URL>",
+    contentType: "application/json",
+    data: JSON.stringify({
+        name: name,
+        email: email
+    }),
     success : function(text){
         if (text == "success") {
-            console.log(text)
             formSuccess();
         } else {
             formError();
@@ -70,21 +64,15 @@ Now, we are going to do the same from the AWS Console.
 
 ```js
 $.ajax({
-    type: "POST",
-    url: "https://x7emf5bl5c.execute-api.eu-west-1.amazonaws.com/dev/users",
-    data: {
-        "name": name,
-        "email": email
-    },
-    dataType: "json",
-    beforeSend: function(x) {
-        if (x && x.overrideMimeType) {
-          x.overrideMimeType("application/j-son;charset=UTF-8");
-        }
-    },
+    method: "POST",
+    url: "<YOUR_API_URL>",
+    contentType: "application/json",
+    data: JSON.stringify({
+        name: name,
+        email: email
+    }),
     success : function(text){
         if (text == "success") {
-            console.log(text)
             formSuccess();
         } else {
             formError();
@@ -98,4 +86,4 @@ To check that the application works properly, go to [Validation](#validation):
 
 ## Validation
 
-To check that our platform works properly, we only have to fill the email contact form and submit it. After this, we should receive an email in the email address that we chose.
+To check that our platform works properly, we only have to fill the email contact form and submit it. After this, you should receive an email in the email address that we chose.
