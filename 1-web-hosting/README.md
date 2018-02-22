@@ -1,6 +1,6 @@
 # Module 1: Web Hosting using Amazon S3
 
-In this module we are going to deploy a static web, using Amazon Simple Storage Service (S3) as host.
+In this module we are going to deploy a static web (it is a landing page for a product using a [given template]( https://onepagelove.com/crystal)), using Amazon Simple Storage Service (S3) as host.
 The architecture is pretty simple: all your static web files (HTML, CSS, Javascript, images, etc.) will be stored in Amazon S3 and we will apply some policies to let users access to the web.
 
 ![Website architecture](./images/architecture.png)
