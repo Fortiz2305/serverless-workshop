@@ -5,16 +5,16 @@ const AWS = require('aws-sdk')
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient()
 
-module.exports.create = (event, context, callback) => {
-  const timestamp = new Date().getTime()
-  const userData = JSON.parse(event.body)
-
+const validateUserData = (userData, callback) => {
   if (typeof userData.name !== 'string' || typeof userData.email !== 'string') {
     console.error('User name or email format is not valid')
     callback(new Error('Name or email format is not valid. Could\'t create the user'))
     return
   }
+}
 
+const addUser = (userData, callback) => {
+  const timestamp = new Date().getTime()
   const params = {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
@@ -38,4 +38,11 @@ module.exports.create = (event, context, callback) => {
       callback(null, response)
     }
   })
+}
+
+module.exports.create = (event, context, callback) => {
+  const userData = JSON.parse(event.body)
+
+  validateUserData(userData, callback)
+  addUser(userData, callback)
 }
