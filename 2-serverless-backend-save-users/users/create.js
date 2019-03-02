@@ -1,21 +1,21 @@
-'use strict'
-
 const uuid = require('uuid')
 const AWS = require('aws-sdk')
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient()
 
-const validateUserData = (userData, callback) => {
+function validateUserData(userData) {
   if (typeof userData.name !== 'string' || typeof userData.email !== 'string') {
-    console.error('User name or email format is not valid')
-    callback(new Error('Name or email format is not valid. Could\'t create the user'))
-    return
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'User name or email format is not valid' })
+    }
   }
 }
 
-const addUser = (userData, callback) => {
+function createParams(userData) {
   const timestamp = new Date().getTime()
-  const params = {
+
+  return {
     TableName: process.env.DYNAMODB_TABLE,
     Item: {
       id: uuid.v1(),
@@ -25,24 +25,16 @@ const addUser = (userData, callback) => {
       updatedAt: timestamp
     }
   }
-
-  dynamoDB.put(params, error => {
-    if (error) {
-      console.error(error)
-      callback(new Error('Couldn\'t create the user'))
-    } else {
-      const response = {
-        statusCode: 200,
-        body: JSON.stringify(params.Item)
-      }
-      callback(null, response)
-    }
-  })
 }
 
-module.exports.create = (event, context, callback) => {
+module.exports.create = async event => {
   const userData = JSON.parse(event.body)
 
-  validateUserData(userData, callback)
-  addUser(userData, callback)
+  validateUserData(userData)
+  await dynamoDB.put(createParams(userData)).promise()
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'User successfully created' })
+  }
 }

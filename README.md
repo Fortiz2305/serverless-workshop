@@ -14,9 +14,9 @@ The application architecture uses [AWS Lambda](https://aws.amazon.com/es/lambda/
 
 To deploy the application, you can take two different approaches:
 
-* Use the [Serverless](https://serverless.com/) framework: it provides an abstraction over AWS.
+* Use the [Serverless](https://serverless.com/) framework: it provides an abstraction over AWS and makes your infrastructure as code.
 
-* Use the [AWS console](https://console.aws.amazon.com): if you are already comfortable working with the AWS console and you don't want to use the Serverless framework "magic", this is your approach :)
+* Use the [AWS console](https://console.aws.amazon.com).
 
 You can find the documentation for both options in each module.
 
